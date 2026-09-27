@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="%APP_LANG%">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&subset=greek"
+      rel="stylesheet"
+    />
+    <script>
+      // Εφαρμογή θέματος πριν το πρώτο render, για να μην «αναβοσβήνει» (βλ. src/theme.ts)
+      try {
+        var t = localStorage.getItem('theme')
+        var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', dark)
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+      } catch (e) {}
+    </script>
+    <!-- Τίτλος, description, Open Graph και hreflang ανά γλώσσα: βλ. localizedHtml στο vite.config.ts -->
+    <!--app-head-->
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body class="bg-stone-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
